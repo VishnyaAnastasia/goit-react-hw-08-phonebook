@@ -1,10 +1,9 @@
+import { Box, Button, Container, TextField } from '@mui/material';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/contacts-operations';
 import { selectContacts } from 'redux/contacts/contacts-selectors';
-
-import styles from './Phonebook.module.css';
 
 Notify.init({
   useIcon: false,
@@ -51,38 +50,55 @@ export const Phonebook = ({ id }) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <label>
-        <h3 className={styles.titleName}>Name</h3>
-        <input
-          className={styles.inputView}
-          onInput={inputHandler}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          placeholder="Anastasia Vishnyakova"
-          required
-        />
-      </label>
-      <label>
-        <h3 className={styles.titleName}>Number</h3>
-        <input
-          className={styles.inputView}
-          onInput={inputHandler}
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          placeholder="555-05-55"
-          required
-        />
-      </label>
-      <div className={styles.btnContainer}>
-        <button className={styles.btnAdd} type="submit">
-          Add
-        </button>
-      </div>
-    </form>
+    <Container component="main" maxWidth="xs">
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Box
+          component="form"
+          onSubmit={submitHandler}
+          noValidate
+          sx={{ mt: 1 }}
+        >
+          <TextField
+            onInput={inputHandler}
+            type="text"
+            name="name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            placeholder="Anastasia Vishnyakova"
+            required
+            margin="normal"
+            fullWidth
+            id="name"
+          ></TextField>
+          <TextField
+            onInput={inputHandler}
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            placeholder="555-05-55"
+            required
+            margin="normal"
+            fullWidth
+            id="tel"
+          ></TextField>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            SAVE
+          </Button>
+        </Box>
+      </Box>
+    </Container>
   );
 };

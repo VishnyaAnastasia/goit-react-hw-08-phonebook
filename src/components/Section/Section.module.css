@@ -1,15 +1,40 @@
 .sectionStyle {
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  /* gap: 20px; */
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: #ffc0cb;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .title {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700;
+  color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .sectionStyle {
+    width: 600px;
+    gap: 10px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sectionStyle {
+    width: 800px;
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 50px;
+  }
 }

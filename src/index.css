@@ -15,7 +15,7 @@ code {
 }
 
 body {
-  background-color: #ffc0cb;
+  background: linear-gradient(to top, #493240, #ff0099) fixed;
 }
 
 html {
@@ -40,6 +40,7 @@ ol {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 ::after,
@@ -51,4 +52,8 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.active {
+  color: black;
 }
